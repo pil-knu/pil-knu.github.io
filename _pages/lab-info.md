@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Lab Info
+nav_title: Lab # shorter label in the menu
 permalink: /lab-info/
 nav: true
 nav_order: 1

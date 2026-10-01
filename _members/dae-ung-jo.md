@@ -9,6 +9,7 @@ bib_name: Jo, Dae Ung # exactly as written in _bibliography/papers.bib ("Last, F
 group: faculty # faculty | phd | ms | undergrad | alumni
 order: 1
 position: Assistant Professor
+# summary: optional research line on the Members card; leave this line commented out to show none
 affiliation: School of Electronics Engineering, Kyungpook National University
 photo: members/dae-ung-jo.jpg
 link: /lab-info/
