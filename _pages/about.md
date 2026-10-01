@@ -18,7 +18,7 @@ latest_posts:
   enabled: false
 ---
 
-The **Perception and Intelligence Laboratory (KNU-PIL)** in the [School of Electronics Engineering](https://see.knu.ac.kr/) at [Kyungpook National University](https://www.knu.ac.kr/) studies how AI systems perceive the real world and turn sensory information into intelligence that is reliable and generalizes. Our goal is to understand why AI systems succeed or fail in real-world scenarios, and to design learning methods that stay reliable under realistic conditions, bridging perception and intelligence for practical AI applications.
+The **Perception and Intelligence Laboratory (KNU-PIL)** in the [School of Electronics Engineering](https://see.knu.ac.kr/) at [Kyungpook National University](https://www.knu.ac.kr/) studies how AI systems perceive the real world and turn sensory information into intelligence that is reliable and generalizes. **Our goal is** to understand why AI systems succeed or fail in real-world scenarios, and to design learning methods that stay reliable under realistic conditions, bridging perception and intelligence for practical AI applications.
 
 **Our research broadly covers**
 
