@@ -1008,3 +1008,47 @@ footer.pil-footer {
     color: #ffffff !important;
   }
 }
+
+/* ---------- Phones: everything a little smaller ---------- */
+// Only screens up to 576px wide (phones). Desktop and tablet sizes are unchanged.
+@media (max-width: 576px) {
+  html {
+    font-size: 15px; // every rem-based size shrinks by about 6%
+  }
+
+  :root {
+    --pil-title: 1.15rem;
+    --pil-lead: 1.05rem;
+  }
+
+  .pil-headline {
+    font-size: 2.2rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .post-header .post-title {
+    font-size: 2rem;
+    margin: 2rem 0 1.75rem;
+  }
+
+  .pil-section-head h2,
+  .pil-h2 {
+    font-size: 1.75rem;
+  }
+
+  .pil-publist h2.bibliography {
+    font-size: 1.5rem;
+  }
+
+  .pil-profile-name {
+    font-size: 1.9rem;
+  }
+
+  .pil-profile-name-sm {
+    font-size: 1.5rem;
+  }
+
+  .pil-news-date {
+    font-size: 1rem;
+  }
+}
