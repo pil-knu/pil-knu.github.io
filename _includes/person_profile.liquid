@@ -1,0 +1,55 @@
+{% comment %}
+  KNU-PIL: profile block for one member (photo, name, interests, contact, education, experience).
+  Usage: {% include person_profile.liquid person=some_member back=true %}
+  All values come from the member's file in _members/.
+{% endcomment %}
+{% assign p = include.person %}
+<section class="pil-profile">
+<div class="pil-profile-side">
+{% if p.photo %}
+<img class="pil-photo" src="{{ p.photo | prepend: '/assets/img/' | relative_url }}" alt="{{ p.name }}">
+{% else %}
+<div class="pil-photo pil-photo-empty" aria-hidden="true">{{ p.name | slice: 0 }}</div>
+{% endif %}
+{% if p.links %}
+<div class="pil-profile-links">
+{% for l in p.links %}<a class="pil-chip-link" href="{{ l.url }}">{{ l.label }}</a>{% endfor %}
+</div>
+{% endif %}
+</div>
+<div class="pil-profile-main">
+{% if include.back %}<a class="pil-back" href="{{ '/members/' | relative_url }}">← Members</a>{% endif %}
+<div class="pil-profile-name">{{ p.name }}</div>
+<div class="pil-profile-position">{{ p.position }}</div>
+<div class="pil-profile-affil">{{ p.affiliation }}</div>
+{% if p.interests %}
+<div class="pil-block">
+<div class="pil-label">Research Interests</div>
+<ul class="pil-dash">{% for i in p.interests %}<li>{{ i }}</li>{% endfor %}</ul>
+</div>
+{% endif %}
+{% if p.email or p.tel or p.office %}
+<div class="pil-block">
+<div class="pil-label">Contact</div>
+<div class="pil-rows">
+{% if p.email %}<div class="pil-row"><div class="pil-row-k">Email</div><div>{{ p.email_display | default: p.email | replace: '@', ' [at] ' | replace: '.', ' [dot] ' }}</div></div>{% endif %}
+{% if p.tel %}<div class="pil-row"><div class="pil-row-k">Tel</div><div>{{ p.tel }}</div></div>{% endif %}
+{% if p.office %}<div class="pil-row"><div class="pil-row-k">Office</div><div>{{ p.office }}</div></div>{% endif %}
+</div>
+</div>
+{% endif %}
+{% if p.education %}
+<div class="pil-block">
+<div class="pil-label">Education</div>
+<div class="pil-rows">{% for e in p.education %}<div class="pil-row"><div class="pil-row-k">{{ e.period }}</div><div>{{ e.text }}</div></div>{% endfor %}</div>
+</div>
+{% endif %}
+{% if p.experience %}
+<div class="pil-block">
+<div class="pil-label">Experience</div>
+<div class="pil-rows">{% for e in p.experience %}<div class="pil-row"><div class="pil-row-k">{{ e.period }}</div><div>{{ e.text }}</div></div>{% endfor %}</div>
+</div>
+{% endif %}
+{% assign pil_bio = include.bio | strip %}{% if pil_bio != '' %}<div class="pil-bio">{{ pil_bio }}</div>{% endif %}
+</div>
+</section>

@@ -1,0 +1,98 @@
+---
+layout: default
+---
+{% comment %}
+  KNU-PIL override of the al_folio_core "about" layout (the home page):
+  headline -> intro -> News (latest items, expandable with pages) -> Selected Publications.
+  Text for the eyebrow and headline lives in the front matter of _pages/about.md.
+{% endcomment %}
+<div class="post pil-home">
+  <section class="pil-hero">
+    {% if page.eyebrow %}
+      <div class="pil-eyebrow">{{ page.eyebrow }}</div>
+    {% endif %}
+    {% if page.headline %}
+      <h1 class="pil-headline">{{ page.headline }}</h1>
+    {% endif %}
+    <div class="pil-intro">{{ content }}</div>
+  </section>
+
+  {% if page.announcements and page.announcements.enabled %}
+    <section
+      class="pil-section pil-home-news"
+      data-limit="{{ page.announcements.limit | default: 5 }}"
+      data-per-page="{{ page.announcements.per_page | default: 20 }}"
+    >
+      <div class="pil-section-head">
+        <h2>News</h2>
+      </div>
+      {% include news.liquid %}
+      <nav class="pil-pager" aria-label="News pages" hidden></nav>
+      <button type="button" class="pil-more-btn" hidden>View all news ↓</button>
+    </section>
+    <script>
+      // Home news: latest `limit` items; "View all news" expands in place, `per_page` items per page.
+      (function () {
+        var sec = document.querySelector('.pil-home-news');
+        if (!sec) return;
+        var items = Array.prototype.slice.call(sec.querySelectorAll('.pil-news-item'));
+        var LIMIT = parseInt(sec.getAttribute('data-limit'), 10) || 5;
+        var PER = parseInt(sec.getAttribute('data-per-page'), 10) || 20;
+        var pager = sec.querySelector('.pil-pager');
+        var btn = sec.querySelector('.pil-more-btn');
+        var pages = Math.max(1, Math.ceil(items.length / PER));
+        var expanded = false;
+        var page = 0;
+
+        function addButton(label, target, disabled, active) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'pil-page-btn' + (active ? ' is-active' : '');
+          b.textContent = label;
+          b.disabled = disabled;
+          if (active) b.setAttribute('aria-current', 'page');
+          b.addEventListener('click', function () {
+            page = target;
+            render();
+            sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+          pager.appendChild(b);
+        }
+
+        function render() {
+          items.forEach(function (li, i) {
+            li.hidden = expanded ? !(i >= page * PER && i < (page + 1) * PER) : i >= LIMIT;
+          });
+          btn.hidden = items.length <= LIMIT;
+          btn.textContent = expanded ? 'Show less ↑' : 'View all news ↓';
+          btn.setAttribute('aria-expanded', expanded);
+          pager.hidden = !expanded || pages < 2;
+          pager.innerHTML = '';
+          if (!pager.hidden) {
+            addButton('← Prev', page - 1, page === 0, false);
+            for (var p = 0; p < pages; p++) addButton(String(p + 1), p, false, p === page);
+            addButton('Next →', page + 1, page === pages - 1, false);
+          }
+        }
+
+        btn.addEventListener('click', function () {
+          expanded = !expanded;
+          page = 0;
+          render();
+          if (!expanded) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        render();
+      })();
+    </script>
+  {% endif %}
+
+  {% if page.selected_papers %}
+    <section class="pil-section">
+      <div class="pil-section-head">
+        <h2>Selected Publications</h2>
+        <a class="pil-more" href="{{ '/publications/' | relative_url }}">Full list →</a>
+      </div>
+      {% include selected_papers.liquid %}
+    </section>
+  {% endif %}
+</div>

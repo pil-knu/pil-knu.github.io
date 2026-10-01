@@ -1,0 +1,20 @@
+{% comment %}
+  KNU-PIL: patent list from _data/patents.yml.
+  Usage: {% include patents.liquid %}                 -> all patents
+         {% include patents.liquid name="Dae Ung Jo" %} -> only patents with this inventor
+  Inventors who are lab members (same `name:` as in _members/) link to their page.
+{% endcomment %}
+{% assign pil_patent_count = 0 %}
+<div class="pil-patents">
+{% for pat in site.data.patents %}
+{% if include.name == nil or pat.inventors contains include.name %}
+{% assign pil_patent_count = pil_patent_count | plus: 1 %}
+<div class="pil-patent">
+<div class="pil-patent-title">{{ pat.title }}</div>
+<div class="pil-patent-inventors">{% for inv in pat.inventors %}{% assign mem = site.members | where: 'name', inv | first %}{% if mem %}{% assign mem_link = mem.link | default: mem.url %}<a href="{{ mem_link | relative_url }}">{{ inv }}</a>{% else %}{{ inv }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
+<div class="pil-patent-numbers">{% for x in pat.numbers %}<div><span class="pil-mono">{{ x.number }}</span><span class="pil-muted">filed on {{ x.filed }}</span><a class="pil-chip-link" href="https://patents.google.com/patent/{{ x.number }}/en">Google Patents</a></div>{% endfor %}</div>
+</div>
+{% endif %}
+{% endfor %}
+</div>
+{% if pil_patent_count == 0 %}<p class="pil-empty">No patents yet.</p>{% endif %}

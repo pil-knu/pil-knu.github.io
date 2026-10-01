@@ -1,0 +1,35 @@
+# Patents, newest first: title, inventors (spell lab members exactly like `name:` in _members/), numbers.
+- title: Method and apparatus with traffic light recognition model
+  inventors: [Dae Ung Jo, Jaewook Yoo]
+  numbers:
+    - { number: US20250166393A1, filed: 2024-03-12 }
+
+- title: Method and apparatus with object detection for autonomous vehicle
+  inventors: [Junho Cho, Moonsub Byeon, Dongwook Lee, Dae Ung Jo]
+  numbers:
+    - { number: US20250131707A1, filed: 2024-05-10 }
+    - { number: KR20250056589A, filed: 2023-10-19 }
+
+- title: Device and method with detection of objects from images
+  inventors: [Jiyeoup Jeong, Heewon Park, Dae Ung Jo]
+  numbers:
+    - { number: US20250191343A1, filed: 2024-05-08 }
+    - { number: KR20250088102A, filed: 2023-12-08 }
+
+- title: Method and apparatus with vector map learning and generation
+  inventors: [Nayeon Kim, Sujin Jang, Dae Ung Jo]
+  numbers:
+    - { number: US20250086469A1, filed: 2024-03-14 }
+    - { number: KR20250037973A, filed: 2023-09-11 }
+
+- title: Method and apparatus with object estimation model training
+  inventors: [Sujin Jang, Dae Ung Jo]
+  numbers:
+    - { number: US20240211749A1, filed: 2023-06-26 }
+    - { number: KR20240103683A, filed: 2022-12-27 }
+
+- title: Method and apparatus with traffic light image composition
+  inventors: [Dae Ung Jo]
+  numbers:
+    - { number: US20240153144A1, filed: 2023-06-08 }
+    - { number: KR20240066746A, filed: 2022-11-08 }

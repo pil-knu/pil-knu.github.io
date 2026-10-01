@@ -1,0 +1,30 @@
+{% comment %}
+  KNU-PIL override of the al_folio_core news list.
+  Reads every item from _data/news.yml (one file for all news), newest first:
+  green year.month, a colored icon for the item's `type` (paper, project, member, seminar, other)
+  and the text (Markdown allowed).
+  The home page shows the latest few and expands the rest in place (see _layouts/about.liquid).
+{% endcomment %}
+<div class="news">
+  {% assign pil_news = site.data.news | sort: 'date' | reverse %}
+  {% if pil_news.size > 0 %}
+    <ul class="pil-news-list">
+      {% for item in pil_news %}
+        <li class="pil-news-item">
+          <span class="pil-news-date">{{ item.date | date: '%Y.%m' }}</span>
+          {% comment %} one colored icon per news type (Font Awesome, already loaded by the theme) {% endcomment %}
+          {% case item.type %}
+            {% when 'paper' %}{% assign pil_icon = 'fa-file-lines' %}{% assign pil_color = '#3B82F6' %}
+            {% when 'project' %}{% assign pil_icon = 'fa-coins' %}{% assign pil_color = '#F5A623' %}
+            {% when 'member' %}{% assign pil_icon = 'fa-cat' %}{% assign pil_color = '#22C55E' %}
+            {% when 'seminar' %}{% assign pil_icon = 'fa-microphone' %}{% assign pil_color = '#F05252' %}
+            {% else %}{% assign pil_icon = 'fa-bullhorn' %}{% assign pil_color = '#A855F7' %}
+          {% endcase %}
+          <div class="pil-news-text"><i class="fa-solid {{ pil_icon }} fa-fw pil-news-icon" style="color: {{ pil_color }}" aria-hidden="true"></i>{{ item.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}</div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No news so far...</p>
+  {% endif %}
+</div>

@@ -1,0 +1,11 @@
+---
+layout: default
+---
+{% comment %}
+  KNU-PIL: personal page for a file in _members/ (profile + their publications and patents).
+  Nothing to edit here: fill in the member's file instead.
+{% endcomment %}
+<div class="post pil-page">
+{% include person_profile.liquid person=page back=true bio=content %}
+{% include research_output.liquid person=page %}
+</div>

@@ -1,0 +1,64 @@
+# News: date (YYYY-MM-DD), type (paper | project | member | seminar | other), text (Markdown). Any order; sorted by date on the site.
+- date: 2026-10-01
+  type: other
+  text: "The KNU-PIL website has been renewed."
+
+- date: 2025-12-22
+  type: seminar
+  text: "Prof. Jo gave a seminar on *Representation Learning for Multimodal Data Bridging Inter-Modality Gaps* at **ETRI**."
+
+- date: 2025-09-01
+  type: seminar
+  text: "Prof. Jo contributed an online lecture, *Causality-Inspired Representation Learning for Domain Generalization*, to the graduate course *Deep Learning and Domain Adaptation for Medical Diagnosis* at **Dankook University** (Fall 2025)."
+
+- date: 2025-07-11
+  type: seminar
+  text: "Prof. Jo gave an invited seminar on *Deep Learning with Multimodal Data* at **Chung-Ang University**."
+
+- date: 2025-07-02
+  type: seminar
+  text: "Prof. Jo gave a lecture on *Deep Learning with Multimodal Data* at the **4th CO-Week Academy**."
+
+- date: 2025-05-19
+  type: seminar
+  text: "Prof. Jo gave a talk, *In the Era of the AI Tools*, at the **BK Lunch Seminar**, Kyungpook National University."
+
+- date: 2026-09-01
+  type: paper
+  text: "Two papers have been accepted to **NeurIPS 2026**: *Codebook-Guided Cross-Modal Knowledge Distillation for Structurally Heterogeneous Features* and *FinAl: Fine-grained Alignment for Detail-Preserving Medical Vision-Language Pretraining*."
+
+- date: 2026-06-01
+  type: project
+  text: "Our project ‘멀티모달 AI를 위한 이질적 특징 간 지식전파 연구’ has been selected for the **KNU More Action Stepping-Stone Grant** (KNU 기초연구지원사업 ‘More Action 개인 디딤돌 사업’)."
+
+- date: 2026-04-01
+  type: paper
+  text: "Our paper *Cross-Modal Feature Distillation via Sample-Aware Adaptive Masking* has been published in **IEEE Access**."
+
+- date: 2026-03-02
+  type: member
+  text: "Welcome **Insu Kang** and **Sanghyuck Nam** to KNU-PIL as undergraduate researchers."
+
+- date: 2026-03-01
+  type: project
+  text: "Prof. Jo has joined the **SW-Centered University Program** (SW 중심대학사업) and the **AI Convergence and Open Sharing System (AICOSS)** (첨단분야 혁신융합대학사업, 인공지능) as participating faculty."
+
+- date: 2025-10-01
+  type: paper
+  text: "Our paper *Multi-Agent Visual Reasoning for Out-of-Distribution Detection in Complex Road Environments* has been published in **IEEE Access**."
+
+- date: 2025-09-01
+  type: project
+  text: "Prof. Jo has joined the **Glocal AI Research Unit** of the KNU Advanced Technology Convergence Research Institute (글로컬대학30 첨단기술융합연구원 AI 연구유닛)."
+
+- date: 2025-05-01
+  type: paper
+  text: "Three papers have been accepted to **IEEE AVSS 2025**: *Distributional Uncertainty for Out-of-Distribution Detection*, *CoT-Segmenter: Enhancing OOD Detection in Dense Road Scenes via Chain-of-Thought Reasoning*, and *Active Learning for Finely-Categorized Image-Text Retrieval by Selecting Hard Negative Unpaired Samples*."
+
+- date: 2025-04-01
+  type: paper
+  text: "Our paper *Generating Visual-adaptive Audio Representation for Audio Recognition* has been published in **Pattern Recognition Letters**."
+
+- date: 2025-03-01
+  type: other
+  text: "Prof. Dae Ung Jo has joined the [School of Electronics Engineering](https://see.knu.ac.kr/) at Kyungpook National University, and the KNU-PIL website is now open."

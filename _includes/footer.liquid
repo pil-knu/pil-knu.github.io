@@ -1,0 +1,10 @@
+{% comment %}
+  KNU-PIL override of the al_folio_core footer: one short line, like most lab sites.
+  Text comes from the `lab:` block in _config.yml.
+{% endcomment %}
+<footer class="pil-footer" role="contentinfo">
+  <div class="container">
+    <div>&copy; Copyright {{ site.time | date: '%Y' }} {{ site.lab.full_name }} ({{ site.title }}).</div>
+    <div><a href="{{ site.lab.university_url }}">{{ site.lab.university }}</a>, {{ site.lab.location }}</div>
+  </div>
+</footer>

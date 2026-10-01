@@ -1,0 +1,50 @@
+{% comment %}
+  KNU-PIL: "Publications | Patents" tabs for one person.
+  Publications are picked from _bibliography/papers.bib by the person's `bib_name`
+  (the regex is prepared by _plugins/pil_members.rb); patents from _data/patents.yml.
+  Usage: {% include research_output.liquid person=some_member %}
+{% endcomment %}
+{% assign p = include.person %}
+{% assign regex = p.bib_regex %}
+<section class="pil-section pil-output">
+<h2 class="pil-h2 pil-h2-plain">Publications &amp; Patents</h2>
+<div class="pil-tabs" role="tablist">
+<button type="button" class="pil-tab is-active" data-tab="pubs" role="tab" aria-selected="true">Publications <span class="pil-count" data-count="pubs"></span></button>
+<button type="button" class="pil-tab" data-tab="pats" role="tab" aria-selected="false">Patents <span class="pil-count" data-count="pats"></span></button>
+</div>
+<div class="pil-panel" data-panel="pubs">
+{% if regex %}
+{% capture pil_pre %}{% bibliography --group_by none --query @misc[author~={{ regex }}] %}{% endcapture %}
+{% capture pil_main %}{% bibliography --query !@misc[author~={{ regex }}] %}{% endcapture %}
+{% endif %}
+{% if pil_pre contains '<li' %}<div class="publications pil-publist"><h2 class="bibliography">Preprint</h2>{{ pil_pre }}</div>{% endif %}
+{% if pil_main contains '<li' %}<div class="publications pil-publist">{{ pil_main }}</div>{% endif %}
+{% unless pil_pre contains '<li' or pil_main contains '<li' %}<p class="pil-empty">No publications yet.</p>{% endunless %}
+</div>
+<div class="pil-panel" data-panel="pats" hidden>
+{% include patents.liquid name=p.name %}
+</div>
+</section>
+<script>
+  (function () {
+    var root = document.currentScript.previousElementSibling;
+    var tabs = root.querySelectorAll('.pil-tab');
+    var panels = root.querySelectorAll('.pil-panel');
+    var pubs = root.querySelectorAll('[data-panel="pubs"] ol.bibliography > li').length;
+    var pats = root.querySelectorAll('[data-panel="pats"] .pil-patent').length;
+    root.querySelector('[data-count="pubs"]').textContent = pubs;
+    root.querySelector('[data-count="pats"]').textContent = pats;
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on);
+        });
+        panels.forEach(function (panel) {
+          panel.hidden = panel.getAttribute('data-panel') !== tab.getAttribute('data-tab');
+        });
+      });
+    });
+  })();
+</script>

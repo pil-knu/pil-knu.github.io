@@ -1,0 +1,25 @@
+# Courses: title, subtitle (optional), terms (newest first; a term can be { term: 2026 Fall, url: ... }), image (optional, assets/img/courses/).
+- title: Image Understanding
+  subtitle: Image Processing and Computer Vision
+  terms: [2026 Fall, 2025 Fall]
+  image: image-understanding.png
+- title: Introduction to Machine Learning
+  subtitle: Mathematical Foundations of Machine Learning
+  terms: [2026 Fall]
+  image: intro-ml.png
+- title: Pattern Recognition
+  subtitle: Classical and Probabilistic Machine Learning
+  terms: [2026 Spring, 2025 Spring]
+  image: pattern-recognition.png
+- title: Algorithm
+  subtitle: Data Structures and Algorithms for AI
+  terms: [2026 Spring]
+  image: algorithm.png
+- title: Problem Solving Skills and Algorithm
+  subtitle: Data Structures and Algorithms for AI
+  terms: [2025 Fall]
+  image: problem-solving.png
+- title: C Programming with Practice
+  subtitle: Fundamentals of Programming in C
+  terms: [2025 Spring]
+  image: c-programming.png

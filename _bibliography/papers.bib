@@ -1,115 +1,220 @@
 ---
 ---
 
-@string{aps = {American Physical Society,}}
-
-@book{einstein1920relativity,
-  title     = {Relativity: the Special and General Theory},
-  author    = {Einstein, Albert},
-  year      = {1920},
-  publisher = {Methuen & Co Ltd},
-  html      = {relativity.html}
+@comment{
+  KNU-PIL publications.
+  selected={true}  -> shown in "Selected Publications" on the home page
+  preview={x.png}  -> thumbnail; put the image in assets/img/publication_preview/
+  abbr={...}       -> venue badge (shown on the home page thumbnails)
+  @article -> green JOURNAL tag, @inproceedings -> blue CONFERENCE tag, @misc -> gray PREPRINT tag (and listed under "Preprint")
+  * after a surname marks co-first or corresponding authors (explained in `annotation`)
 }
 
-@book{einstein1956investigations,
+@comment{ 2026 }
+
+@inproceedings{jo2026codebook,
+  abbr        = {NeurIPS},
+  title       = {Codebook-Guided Cross-Modal Knowledge Distillation for Structurally Heterogeneous Features},
+  author      = {Jo, Dae Ung and Lim, Jongin and Yoo, YoungJoon and Um, Daeho},
+  booktitle   = {Conference on Neural Information Processing Systems (NeurIPS)},
+  year        = {2026},
   bibtex_show = {true},
-  title       = {Investigations on the Theory of the Brownian Movement},
-  author      = {Einstein, Albert},
-  year        = {1956},
-  publisher   = {Courier Corporation},
-  preview     = {brownian-motion.gif}
+  preview     = {jo2026codebook.png},
+  selected    = {true}
 }
 
-@article{einstein1950meaning,
-  abbr        = {AJP},
+@inproceedings{youn2026final,
+  abbr        = {NeurIPS},
+  title       = {FinAl: Fine-grained Alignment for Detail-Preserving Medical Vision-Language Pretraining},
+  author      = {Youn, Jongsu and Lee, Dongyoung and Bae, JaeHyeong and Choi*, Sang-Il and Choi*, Sangtae and Jo*, Dae Ung and Choi*, Jongwon},
+  booktitle   = {Conference on Neural Information Processing Systems (NeurIPS)},
+  year        = {2026},
+  annotation  = {* Corresponding authors},
   bibtex_show = {true},
-  title       = {The meaning of relativity},
-  author      = {Einstein, Albert and Taub, AH},
-  journal     = {American Journal of Physics},
-  volume      = {18},
-  number      = {6},
-  pages       = {403--404},
-  year        = {1950},
-  publisher   = {American Association of Physics Teachers}
+  preview     = {youn2026final.png},
+  selected    = {true}
 }
 
-@article{PhysRev.47.777,
-  abbr              = {PhysRev},
-  title             = {Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?},
-  author            = {Einstein*†, A. and Podolsky*, B. and Rosen*, N.},
-  abstract          = {In a complete theory there is an element corresponding to each element of reality. A sufficient condition for the reality of a physical quantity is the possibility of predicting it with certainty, without disturbing the system. In quantum mechanics in the case of two physical quantities described by non-commuting operators, the knowledge of one precludes the knowledge of the other. Then either (1) the description of reality given by the wave function in quantum mechanics is not complete or (2) these two quantities cannot have simultaneous reality. Consideration of the problem of making predictions concerning a system on the basis of measurements made on another system that had previously interacted with it leads to the result that if (1) is false then (2) is also false. One is thus led to conclude that the description of reality as given by a wave function is not complete.},
-  journal           = {Phys. Rev.},
-  location          = {New Jersey},
-  volume            = {47},
-  issue             = {10},
-  pages             = {777--780},
-  numpages          = {0},
-  year              = {1935},
-  month             = {May},
-  publisher         = aps,
-  doi               = {10.1103/PhysRev.47.777},
-  url               = {https://link.aps.org/doi/10.1103/PhysRev.47.777},
-  html              = {https://journals.aps.org/pr/abstract/10.1103/PhysRev.47.777},
-  pdf               = {example_pdf.pdf},
-  altmetric         = {248277},
-  dimensions        = {true},
-  google_scholar_id = {qyhmnyLat1gC},
-  video             = {https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ},
-  additional_info   = {. *More Information* can be [found here](https://github.com/alshedivat/al-folio/)},
-  annotation        = {* Example use of superscripts<br>† Albert Einstein},
-  selected          = {true},
-  inspirehep_id     = {3255}
+@article{jo2026masking,
+  abbr        = {IEEE Access},
+  title       = {Cross-Modal Feature Distillation via Sample-Aware Adaptive Masking},
+  author      = {Jo, Dae Ung and Um, Daeho},
+  journal     = {IEEE Access},
+  year        = {2026},
+  html        = {https://ieeexplore.ieee.org/document/11479573},
+  bibtex_show = {true}
 }
 
-@article{einstein1905molekularkinetischen,
-  title     = {{\"U}ber die von der molekularkinetischen Theorie der W{\"a}rme geforderte Bewegung von in ruhenden Fl{\"u}ssigkeiten suspendierten Teilchen},
-  author    = {Einstein, A.},
-  journal   = {Annalen der physik},
-  volume    = {322},
-  number    = {8},
-  pages     = {549--560},
-  year      = {1905},
-  publisher = {Wiley Online Library}
+@comment{ 2025 }
+
+@article{song2025multiagent,
+  abbr        = {IEEE Access},
+  title       = {Multi-Agent Visual Reasoning for Out-of-Distribution Detection in Complex Road Environments},
+  author      = {Song, Jeonghyo and Yun, Kimin and Jo, Dae Ung and Kim, Jinyoung and Yoo, YoungJoon},
+  journal     = {IEEE Access},
+  year        = {2025},
+  html        = {https://ieeexplore.ieee.org/document/11223182},
+  bibtex_show = {true}
 }
 
-@article{einstein1905movement,
-  abbr    = {Ann. Phys.},
-  title   = {Un the movement of small particles suspended in statiunary liquids required by the molecular-kinetic theory 0f heat},
-  author  = {Einstein, A.},
-  journal = {Ann. Phys.},
-  volume  = {17},
-  pages   = {549--560},
-  year    = {1905}
+@inproceedings{kim2025distributional,
+  abbr        = {AVSS},
+  title       = {Distributional Uncertainty for Out-of-Distribution Detection},
+  author      = {Kim, Jinyoung and Jo, Dae Ung and Yun, Kimin and Song, Jeonghyo and Yoo, YoungJoon},
+  booktitle   = {IEEE International Conference on Advanced Visual and Signal-Based Systems (AVSS)},
+  year        = {2025},
+  html        = {https://ieeexplore.ieee.org/document/11149895},
+  bibtex_show = {true}
 }
 
-@article{einstein1905electrodynamics,
-  title  = {On the electrodynamics of moving bodies},
-  author = {Einstein, A.},
-  year   = {1905}
+@inproceedings{song2025cotsegmenter,
+  abbr        = {AVSS},
+  title       = {CoT-Segmenter: Enhancing OOD Detection in Dense Road Scenes via Chain-of-Thought Reasoning},
+  author      = {Song, Jeonghyo and Yun, Kimin and Jo, Dae Ung and Kim, Jinyoung and Yoo, YoungJoon},
+  booktitle   = {IEEE International Conference on Advanced Visual and Signal-Based Systems (AVSS)},
+  year        = {2025},
+  doi         = {10.1109/AVSS65446.2025.11149901},
+  html        = {https://doi.org/10.1109/AVSS65446.2025.11149901},
+  bibtex_show = {true}
 }
 
-@article{einstein1905photoelectriceffect,
+@inproceedings{jo2025active,
+  abbr        = {AVSS},
+  title       = {Active Learning for Finely-Categorized Image-Text Retrieval by Selecting Hard Negative Unpaired Samples},
+  author      = {Jo, Dae Ung and Lee, Kyuewang and Chung, JaeHo},
+  booktitle   = {IEEE International Conference on Advanced Visual and Signal-Based Systems (AVSS)},
+  year        = {2025},
+  html        = {https://ieeexplore.ieee.org/document/11149975},
+  arxiv       = {2405.16301},
+  bibtex_show = {true}
+}
+
+@article{youn2025visualadaptive,
+  abbr        = {PRL},
+  title       = {Generating Visual-adaptive Audio Representation for Audio Recognition},
+  author      = {Youn, Jongsu and Jo, Dae Ung and Seo, Seungmo and Kim, Sukhyun and Choi, Jongwon},
+  journal     = {Pattern Recognition Letters},
+  year        = {2025},
+  doi         = {10.1016/j.patrec.2025.03.020},
+  html        = {https://doi.org/10.1016/j.patrec.2025.03.020},
+  bibtex_show = {true}
+}
+
+@comment{ 2024 and earlier }
+
+@article{chung2024c2icat,
+  abbr        = {IEEE Access},
+  title       = {C2I-CAT: Class-to-Image Cross Attention Transformer for Out-of-Distribution Detection},
+  author      = {Chung, JaeHo and Cho, SeokHo and Choi, HyunJun and Jo, Dae Ung and Jung, YoonHo and Choi, Jin Young},
+  journal     = {IEEE Access},
+  year        = {2024},
+  html        = {https://ieeexplore.ieee.org/abstract/document/10506497},
+  bibtex_show = {true}
+}
+
+@inproceedings{jang2023stxd,
+  abbr        = {NeurIPS},
+  title       = {STXD: Structural and Temporal Cross-Modal Distillation for Multi-View 3D Object Detection},
+  author      = {Jang*, Sujin and Jo*, Dae Ung and Hwang, Sung Ju and Lee, Dongwook and Ji, Daehyun},
+  booktitle   = {Conference on Neural Information Processing Systems (NeurIPS)},
+  year        = {2023},
+  annotation  = {* Equal contribution},
+  pdf         = {https://papers.nips.cc/paper_files/paper/2023/file/5d8c01de2dc698c54201c1c7d0b86974-Paper-Conference.pdf},
+  html        = {https://openreview.net/forum?id=Grz2ijKrWI},
+  poster      = {https://neurips.cc/virtual/2023/poster/72189},
   bibtex_show = {true},
-  abbr        = {Ann. Phys.},
-  title       = {{{\"U}ber einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt}},
-  author      = {Albert Einstein},
-  abstract    = {This is the abstract text.},
-  journal     = {Ann. Phys.},
-  volume      = {322},
-  number      = {6},
-  pages       = {132--148},
-  year        = {1905},
-  doi         = {10.1002/andp.19053220607},
-  award       = {Albert Einstein receveid the **Nobel Prize in Physics** 1921 *for his services to Theoretical Physics, and especially for his discovery of the law of the photoelectric effect*},
-  award_name  = {Nobel Prize}
+  preview     = {jang2023stxd.png},
+  selected    = {true}
 }
 
-@book{przibram1967letters,
-  bibtex_show = {true},
-  title       = {Letters on wave mechanics},
-  author      = {Einstein, Albert and Schrödinger, Erwin and Planck, Max and Lorentz, Hendrik Antoon and Przibram, Karl},
-  year        = {1967},
-  publisher   = {Vision},
-  preview     = {wave-mechanics.gif},
-  abbr        = {Vision}
+@article{jo2022passive,
+  abbr        = {IEEE Access},
+  title       = {How Much a Model Be Trained by Passive Learning Before Active Learning?},
+  author      = {Jo, Dae Ung and Yun, Sangdoo and Choi, Jin Young},
+  journal     = {IEEE Access},
+  year        = {2022},
+  html        = {https://ieeexplore.ieee.org/document/9741728},
+  bibtex_show = {true}
+}
+
+@article{jeong2022congestion,
+  abbr        = {IEEE Access},
+  title       = {Congestion-aware Bayesian Loss for Crowd Counting},
+  author      = {Jeong, Jiyeoup and Choi, Jongwon and Jo, Dae Ung and Choi, Jin Young},
+  journal     = {IEEE Access},
+  year        = {2022},
+  html        = {https://ieeexplore.ieee.org/document/9684422},
+  bibtex_show = {true}
+}
+
+@inproceedings{lim2021cadnet,
+  abbr        = {AAAI},
+  title       = {Class-Attentive Diffusion Network for Semi-supervised Classification},
+  author      = {Lim, Jongin and Um, Daeho and Chang, Hyung Jin and Jo, Dae Ung and Choi, Jin Young},
+  booktitle   = {35th AAAI Conference on Artificial Intelligence (AAAI)},
+  year        = {2021},
+  arxiv       = {2006.10222},
+  bibtex_show = {true}
+}
+
+@misc{jo2025understanding,
+  abbr            = {Preprint},
+  title           = {Understanding Dimensional Collapse in Cross-Modal Feature Distillation},
+  author          = {Jo, Dae Ung and Jang, Sujin and Heo, Jay and Hwang, Sung Ju},
+  additional_info = {Preprint},
+  year            = {2025},
+  pdf             = {https://openreview.net/pdf?id=19ufhreGTj},
+  bibtex_show     = {true}
+}
+
+@misc{park2021influential,
+  abbr        = {arXiv},
+  title       = {Influential Rank: A New Perspective of Post-training for Robust Model against Noisy Labels},
+  author      = {Park, Seulki and Song, Hwanjun and Um, Daeho and Jo, Dae Ung and Yun, Sangdoo and Choi, Jin Young},
+  additional_info = {arXiv preprint arXiv:2106.07217},
+  year        = {2021},
+  arxiv       = {2106.07217},
+  bibtex_show = {true}
+}
+
+@inproceedings{jo2020associative,
+  abbr        = {AAAI},
+  title       = {Associative Variational Auto-encoder with Distributed Latent Spaces and Associators},
+  author      = {Jo, Dae Ung and Lee, ByeongJu and Choi, Jongwon and Yoo, Haanju and Choi, Jin Young},
+  booktitle   = {34th AAAI Conference on Artificial Intelligence (AAAI)},
+  year        = {2020},
+  html        = {https://ojs.aaai.org//index.php/AAAI/article/view/6778},
+  supp        = {https://drive.google.com/file/d/1Lm-Pmh6_V_SEXvhgseaumOKjfPvrA7XS/view?usp=sharing},
+  bibtex_show = {true}
+}
+
+@inproceedings{ro2019backbone,
+  abbr        = {AAAI},
+  title       = {Backbone Can Not be Trained at Once: Rolling Back to Pre-trained Network for Person Re-Identification},
+  author      = {Ro, Youngmin and Choi, Jongwon and Jo, Dae Ung and Heo, Byeongho and Lim, Jongin and Choi, Jin Young},
+  booktitle   = {33rd AAAI Conference on Artificial Intelligence (AAAI)},
+  year        = {2019},
+  html        = {https://ojs.aaai.org//index.php/AAAI/article/view/4913},
+  website     = {https://sites.google.com/view/youngmin-ro-vision/home/rollback},
+  bibtex_show = {true}
+}
+
+@inproceedings{byeon2017realtime,
+  abbr        = {ICCAS},
+  title       = {Real-time Scheme for 3-Dimensional Localizing and Tracking of People in Multiple Camera Settings},
+  author      = {Byeon, Moonsub and Yun, Sangdoo and Ro, Youngmin and Jo, Dae Ung and Kim, Kikyung and Choi, Jin Young},
+  booktitle   = {International Conference on Control, Automation and Systems (ICCAS)},
+  year        = {2017},
+  html        = {https://ieeexplore.ieee.org/document/8204448},
+  bibtex_show = {true}
+}
+
+@inproceedings{jo2017learningrate,
+  abbr        = {ISIS},
+  title       = {Effect of Learning Rate to Generalization Power},
+  author      = {Jo, Dae Ung and Choi, Jongwon and Choi, Jin Young},
+  booktitle   = {International Symposium on Advanced Intelligent Systems (ISIS)},
+  year        = {2017},
+  pdf         = {https://drive.google.com/file/d/1CV8hRsPBcQnfm-ZNx2g_FbYoLAAPyfGZ/view?usp=sharing},
+  bibtex_show = {true}
 }

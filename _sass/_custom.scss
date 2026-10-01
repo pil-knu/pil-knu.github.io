@@ -1,0 +1,976 @@
+/*******************************************************************************
+ * KNU-PIL custom styles
+ * Loaded last from assets/css/main.scss, so these rules override theme defaults.
+ * Change the accent color in one place: --global-theme-color below.
+ ******************************************************************************/
+
+:root {
+  --global-theme-color: #0e7c66; // accent (links, badges, labels, JOURNAL tag)
+  --pil-conference-color: #2f64d6; // CONFERENCE tag (blue)
+  --pil-preprint-color: #6b6b66; // PREPRINT tag (gray)
+  --global-hover-color: #0b6150;
+  --global-text-color: #141414;
+  --global-text-color-light: #5c5c57;
+  --global-divider-color: #e6e6e3;
+  --global-footer-bg-color: #141414;
+  --global-footer-text-color: #c9c9c4;
+  --global-footer-link-color: #f2f2ee;
+
+  // Type scale, shared by every page (use these instead of new sizes):
+  //   display (Space Grotesk 700): 5rem home headline · 4rem page title · 2.25rem section · 1.75rem year group
+  //   sans (IBM Plex Sans):        2.4rem name · 1.75rem faculty name · 1.25rem item title (600)
+  //                                1.125rem lead · 1rem body · 0.875rem small
+  //   mono (IBM Plex Mono):        1.125rem news date · 0.95rem menu / row labels · 0.8rem caps labels · 0.75rem tags & chips
+  --pil-title: 1.25rem;
+  --pil-lead: 1.125rem;
+  --pil-body: 1rem;
+  --pil-small: 0.875rem;
+  --pil-mono-md: 0.95rem;
+  --pil-mono-sm: 0.8rem;
+  --pil-mono-xs: 0.75rem;
+  --pil-font-sans: "IBM Plex Sans", "IBM Plex Sans KR", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --pil-font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --pil-font-display: "Space Grotesk", "IBM Plex Sans", "IBM Plex Sans KR", system-ui, sans-serif;
+  --pil-soft: #f5f5f2;
+}
+
+body {
+  font-family: var(--pil-font-sans);
+  color: var(--global-text-color);
+}
+
+/* ---------- Navbar: monospace, uppercase, underline on the active item ---------- */
+#navbar {
+  background-color: #fafaf8;
+  border-bottom: 1px solid var(--global-divider-color);
+  box-shadow: none;
+
+  .pil-logo {
+    display: block;
+    height: 32px;
+    width: auto;
+  }
+
+  .navbar-brand.title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--pil-font-display);
+    font-weight: 700 !important;
+    letter-spacing: 0.02em;
+    color: var(--global-text-color);
+  }
+
+  .nav-link {
+    font-family: var(--pil-font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--global-text-color);
+  }
+
+  .nav-item.active > .nav-link {
+    font-weight: 600;
+    box-shadow: inset 0 -2px 0 var(--global-text-color);
+  }
+}
+
+/* ---------- Home: hero ---------- */
+.pil-home {
+  padding-top: 3rem;
+}
+
+// Subtle dot grid at the top of every page, full width, fading out quickly from the top.
+// The home page gets a taller band because its hero is taller.
+[role="main"] {
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -8rem; // reach up under the (opaque) navbar so the dots start at the top edge
+    left: 50%;
+    width: 100vw;
+    height: 38rem;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background-image: radial-gradient(#cfcfc9 1.1px, transparent 1.4px);
+    background-size: 22px 22px;
+    background-position: center top;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.35) 25%, transparent 55%);
+    mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.35) 25%, transparent 55%);
+  }
+
+  &:has(.pil-home)::before {
+    height: 72rem;
+  }
+}
+
+// the full-width dots must not cause sideways scrolling
+body {
+  overflow-x: clip;
+}
+
+.pil-eyebrow {
+  font-family: var(--pil-font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-theme-color);
+}
+
+.pil-headline {
+  margin: 1.5rem 0 2rem;
+  font-family: var(--pil-font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--global-text-color);
+}
+
+.pil-intro {
+  max-width: 62rem;
+  font-size: var(--pil-lead);
+  line-height: 1.7;
+  color: #2b2b29;
+
+  p {
+    margin-bottom: 1.1rem;
+  }
+
+  strong {
+    color: var(--global-text-color);
+  }
+
+  // Research topics: a dash in the accent color instead of a bullet
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0.75rem;
+
+    li {
+      position: relative;
+      padding-left: 1.75rem;
+      margin-bottom: 0.6rem;
+
+      &::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        color: var(--global-theme-color);
+        font-family: var(--pil-font-mono);
+      }
+    }
+  }
+}
+
+/* ---------- Home: section headers ("01 / NEWS", "View all →") ---------- */
+.pil-section {
+  margin-top: 6rem;
+}
+
+.pil-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--global-text-color);
+
+  h2 {
+    margin: 0.5rem 0 0;
+    font-family: var(--pil-font-display);
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--global-text-color);
+  }
+}
+
+.pil-more {
+  font-family: var(--pil-font-mono);
+  font-size: 0.95rem;
+  color: var(--global-text-color);
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--global-theme-color);
+    text-decoration: none;
+  }
+}
+
+/* ---------- News list ---------- */
+.pil-news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pil-news-item {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  gap: 2rem;
+  align-items: baseline;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--global-divider-color);
+  font-size: var(--pil-lead);
+  line-height: 1.6;
+}
+
+.pil-news-item[hidden] {
+  display: none;
+}
+
+.pil-home-news {
+  scroll-margin-top: 6rem; // stay clear of the fixed menu when scrolling back up
+}
+
+// thin full-width "View all news" / "Show less" button under the list
+.pil-more-btn {
+  display: block;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.8rem 0;
+  border: 1px solid #d8d8d3;
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--global-text-color);
+  font-family: var(--pil-font-mono);
+  font-size: var(--pil-mono-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+
+  &:hover {
+    background: #f5f5f2;
+  }
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.pil-pager {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1.5rem;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.pil-page-btn {
+  min-width: 2.75rem;
+  padding: 0.7rem 0.6rem;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--global-text-color);
+  font-family: var(--pil-font-mono);
+  font-size: var(--pil-mono-sm);
+  font-weight: 600;
+  cursor: pointer;
+
+  &.is-active {
+    background: var(--global-text-color);
+    color: #ffffff;
+  }
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+}
+
+// colored type icon in front of each news item (_includes/news.liquid)
+.pil-news-icon {
+  margin-right: 0.6rem;
+  font-size: 1.05em;
+}
+
+.pil-news-date {
+  font-family: var(--pil-font-mono);
+  font-weight: 600;
+  font-size: var(--pil-lead);
+  color: var(--global-theme-color);
+}
+
+@media (max-width: 576px) {
+  .pil-news-item {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+}
+
+/* ---------- Publications ---------- */
+.publications ol.bibliography li {
+  padding: 1.5rem 0;
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--global-divider-color);
+
+  .abbr abbr {
+    font-family: var(--pil-font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border-radius: 4px;
+  }
+
+  .title {
+    font-size: var(--pil-title);
+    font-weight: 600;
+    line-height: 1.45;
+    margin-bottom: 0.3rem;
+  }
+
+  .author > em {
+    font-weight: 600;
+  }
+
+  .periodical {
+    color: #4f4f4a;
+  }
+
+  // Paper / arXiv / PDF / BIB ... : light gray chips with dark text.
+  // Color is reserved for the paper-type tags, so links stay neutral.
+  .links {
+    margin-top: 0.35rem;
+  }
+
+  .links a.btn {
+    display: inline-block;
+    font-family: var(--pil-font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1rem;
+    padding: 0.2rem 0.65rem;
+    margin: 0.15rem 0.35rem 0.15rem 0;
+    border: 0;
+    border-radius: 6px;
+    background: #efefeb;
+    color: var(--global-text-color);
+    text-transform: none;
+
+    &:hover {
+      background: #e2e2dc;
+      color: var(--global-text-color);
+    }
+  }
+
+  // arrow on links that open a page (not on the ABS / BIB toggles)
+  .links a.btn[href^="http"]::after,
+  .links a.btn[href^="/"]::after {
+    content: " ↗";
+  }
+}
+
+// Wider thumbnail column on desktop, like the mockup
+@media (min-width: 768px) {
+  .publications ol.bibliography li .row > .abbr {
+    flex: 0 0 26%;
+    max-width: 26%;
+    padding-right: 2rem;
+  }
+  .publications ol.bibliography li .row > .abbr + div {
+    flex: 1 1 0;
+    max-width: none;
+  }
+}
+
+.publications h2.bibliography {
+  font-family: var(--pil-font-display);
+  color: var(--global-text-color-light);
+}
+
+/* ---------- Page titles ---------- */
+.post-header .post-title {
+  font-family: var(--pil-font-display);
+  font-size: clamp(2.25rem, 4.5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 3rem 0 2.5rem;
+}
+
+.post-header .post-description:empty {
+  display: none;
+}
+
+/* ---------- Small shared pieces ---------- */
+.pil-mono {
+  font-family: var(--pil-font-mono);
+}
+
+.pil-muted {
+  color: #4f4f4a;
+}
+
+.pil-empty {
+  padding: 1.5rem 0;
+  color: var(--global-text-color-light);
+}
+
+.pil-link {
+  font-family: var(--pil-font-mono);
+  font-size: 0.85rem;
+  color: var(--global-theme-color);
+}
+
+.pil-btn {
+  display: inline-block;
+  font-family: var(--pil-font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  border: 1px solid var(--global-text-color);
+  border-radius: 6px;
+  padding: 0.7rem 1.1rem;
+  color: var(--global-text-color);
+
+  &:hover {
+    color: var(--global-theme-color);
+    border-color: var(--global-theme-color);
+    text-decoration: none;
+  }
+}
+
+.pil-pill {
+  justify-self: end;
+  white-space: nowrap;
+  font-family: var(--pil-font-mono);
+  font-size: var(--pil-mono-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  border: 1px solid #bdbdb8;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+}
+
+.pil-label {
+  margin-bottom: 0.6rem;
+  font-family: var(--pil-font-mono);
+  font-weight: 600;
+  font-size: var(--pil-mono-sm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-text-color);
+}
+
+.pil-h2 {
+  margin: 0 0 1.25rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--global-text-color);
+  font-family: var(--pil-font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+.pil-h2-plain {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+ul.pil-dash {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.35rem;
+
+    &::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--global-theme-color);
+      font-family: var(--pil-font-mono);
+    }
+  }
+}
+
+.pil-dash-2col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 2rem;
+}
+
+.pil-rows .pil-row {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.pil-row-k {
+  font-family: var(--pil-font-mono);
+  font-size: var(--pil-mono-md);
+  font-weight: 600;
+  color: var(--global-theme-color);
+}
+
+.pil-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #ecece8;
+}
+
+.pil-photo-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--pil-font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  color: #9a9a95;
+}
+
+/* ---------- Profile (Lab Info + personal pages) ---------- */
+.pil-profile {
+  display: grid;
+  grid-template-columns: 22rem minmax(0, 1fr);
+  gap: 4rem;
+  margin-bottom: 5rem;
+}
+
+.pil-profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.pil-profile-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  .pil-block {
+    margin-top: 2rem;
+  }
+}
+
+.pil-back {
+  align-self: flex-start;
+  font-family: var(--pil-font-mono);
+  font-size: 0.85rem;
+  color: var(--global-text-color-light);
+}
+
+.pil-profile-name {
+  font-family: var(--pil-font-sans);
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.pil-profile-name-sm {
+  font-size: 1.75rem;
+}
+
+.pil-profile-position {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.pil-profile-affil {
+  color: #4f4f4a;
+}
+
+.pil-bio {
+  margin-top: 2rem;
+}
+
+.pil-map {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ecece8;
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 26rem;
+    border: 0;
+  }
+}
+
+.pil-map-caption {
+  margin-top: 1rem;
+}
+
+/* ---------- Tabs ---------- */
+.pil-tabs {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.pil-tab {
+  padding: 0.75rem 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 1.1rem;
+  color: var(--global-text-color-light);
+  cursor: pointer;
+
+  &.is-active {
+    font-weight: 600;
+    color: var(--global-text-color);
+    box-shadow: inset 0 -2px 0 var(--global-theme-color);
+  }
+
+  &:hover {
+    color: var(--global-text-color);
+    text-decoration: none;
+  }
+}
+
+.pil-count {
+  font-family: var(--pil-font-mono);
+  font-size: 0.8rem;
+  color: var(--global-text-color-light);
+}
+
+.pil-panel[hidden] {
+  display: none;
+}
+
+/* ---------- Full publication lists (Publications, Lab Info, personal pages) ---------- */
+.pil-publist {
+  margin-top: 0;
+
+  // no thumbnail column on full lists
+  ol.bibliography li .row > .abbr {
+    display: none;
+  }
+  ol.bibliography li .row > .abbr + div {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+
+  h2.bibliography {
+    text-align: left;
+    color: var(--global-text-color);
+    border-top: 0;
+    border-bottom: 1px solid var(--global-text-color);
+    padding: 2.5rem 0 0.75rem;
+    margin: 0;
+    font-size: 1.75rem;
+  }
+
+}
+
+// colored type tag in front of the title: Journal (green), Conference (blue), Preprint (gray)
+.pil-type-conference {
+  background-color: var(--pil-conference-color) !important;
+}
+
+.pil-type-preprint {
+  background-color: var(--pil-preprint-color) !important;
+}
+
+.pil-type {
+  display: inline-block;
+  vertical-align: 2px;
+  margin-right: 0.6rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background-color: var(--global-theme-color);
+  color: #ffffff;
+  font-family: var(--pil-font-mono);
+  font-size: var(--pil-mono-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+// lab members (auto-linked) and the PI in author lists
+.publications .author a,
+.publications .author a.pil-self {
+  font-weight: 600;
+  text-decoration: underline;
+  border-bottom: 0 !important;
+  color: var(--global-text-color);
+
+  em {
+    font-style: normal;
+    border-bottom: 0;
+  }
+}
+
+/* ---------- Members ---------- */
+.pil-faculty {
+  display: grid;
+  grid-template-columns: 17.5rem minmax(0, 1fr);
+  gap: 3.5rem;
+
+  .pil-block {
+    margin-top: 1.75rem;
+  }
+}
+
+.pil-inline-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+
+  > span {
+    margin-right: 1rem;
+  }
+}
+
+.pil-member-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.pil-member-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  color: var(--global-text-color);
+
+  .pil-photo {
+    aspect-ratio: 1 / 1;
+    margin-bottom: 0.6rem;
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    .pil-member-name {
+  line-height: 1.45;
+  font-weight: 600;
+  font-size: var(--pil-title);
+      color: var(--global-theme-color);
+    }
+  }
+}
+
+.pil-member-name {
+  font-size: var(--pil-title);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.pil-member-sub {
+  font-size: var(--pil-body);
+  color: #4f4f4a;
+}
+
+/* ---------- Link chip (patents, anywhere else) ---------- */
+.pil-chip-link {
+  display: inline-block;
+  font-family: var(--pil-font-mono);
+  font-size: var(--pil-mono-xs);
+  font-weight: 600;
+  line-height: 1rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 6px;
+  background: #efefeb;
+  color: var(--global-text-color);
+
+  &::after {
+    content: " ↗";
+  }
+
+  &.pil-chip-internal::after {
+    content: none; // links inside the site: no "opens elsewhere" arrow
+  }
+
+  &:hover {
+    background: #e2e2dc;
+    color: var(--global-text-color);
+    text-decoration: none;
+  }
+}
+
+/* ---------- Patents ---------- */
+.pil-patent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.pil-patent-title {
+  line-height: 1.45;
+  font-size: var(--pil-title);
+  font-weight: 600;
+}
+
+.pil-patent-inventors a {
+  font-weight: 600;
+  text-decoration: underline;
+  color: var(--global-text-color);
+}
+
+.pil-patent-numbers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pil-patent-numbers > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  font-size: 0.95rem;
+
+  .pil-mono {
+    font-weight: 600;
+  }
+}
+
+/* ---------- Projects ---------- */
+.pil-projects {
+  border-top: 1px solid var(--global-text-color);
+}
+
+.pil-project {
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 1fr) auto; // role column fits full names
+  gap: 2rem;
+  align-items: start;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.pil-project-period {
+  font-weight: 600;
+  padding-top: 0.15rem;
+  color: var(--global-theme-color); // green, like news dates and Lab Info labels
+}
+
+.pil-project-title {
+  line-height: 1.45;
+  font-size: var(--pil-title);
+  font-weight: 600;
+}
+
+/* ---------- Courses ---------- */
+.pil-course-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.pil-course {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.pil-course-visual {
+  position: relative;
+  height: 13rem;
+  background: #ecece8;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.pil-course-terms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+.pil-term {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  background: var(--global-theme-color);
+  color: #ffffff;
+  font-family: var(--pil-font-mono);
+  font-size: var(--pil-mono-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+a.pil-term:hover {
+  background: var(--global-hover-color);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.pil-course-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex-grow: 1;
+  padding: 1.75rem;
+}
+
+.pil-course-title {
+  font-size: var(--pil-title);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 768px) {
+  .pil-profile,
+  .pil-faculty {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .pil-member-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pil-course-grid {
+    grid-template-columns: 1fr;
+  }
+  .pil-project {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+
+    .pil-pill {
+      justify-self: start;
+    }
+  }
+  .pil-dash-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Footer (markup in _includes/footer.liquid) ---------- */
+footer.pil-footer {
+  margin-top: 6rem;
+  padding: 2.75rem 0 3.25rem;
+  border-top: 0;
+  background-color: var(--global-footer-bg-color); // #141414, set at the top of this file
+  color: var(--global-footer-text-color);
+  font-size: var(--pil-small);
+  line-height: 1.7;
+
+  a {
+    color: var(--global-footer-link-color);
+    text-decoration: underline;
+  }
+}
