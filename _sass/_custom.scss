@@ -36,14 +36,14 @@
 
 body {
   font-family: var(--pil-font-sans);
-  font-weight: 400; // Regular on desktop/tablet; phones use Light (300), see the phone block at the end
+  font-weight: 300; // Light body text on every screen (the 300 weight is loaded in _config.yml)
   color: var(--global-text-color);
 }
 
-// bold text (**...** in Markdown): SemiBold, which balances the Light (300) body text
+// bold text (**...** in Markdown): Medium, two steps above the Light (300) body text
 strong,
 b {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* ---------- Navbar: monospace, uppercase, underline on the active item ---------- */
@@ -1048,15 +1048,6 @@ footer.pil-footer {
 @media (max-width: 576px) {
   html {
     font-size: 15px; // every rem-based size shrinks by about 6%
-  }
-
-  body {
-    font-weight: 300; // Light body text on phones (the 300 weight is loaded in _config.yml)
-  }
-
-  strong,
-  b {
-    font-weight: 500; // keeps the same two-step gap as desktop (400 / 600)
   }
 
   :root {
