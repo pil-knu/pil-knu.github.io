@@ -40,10 +40,10 @@ body {
   color: var(--global-text-color);
 }
 
-// bold text (**...** in Markdown) is always clearly bold
+// bold text (**...** in Markdown): SemiBold, which balances the Light (300) body text
 strong,
 b {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 /* ---------- Navbar: monospace, uppercase, underline on the active item ---------- */
