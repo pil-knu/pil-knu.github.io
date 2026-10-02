@@ -36,7 +36,7 @@
 
 body {
   font-family: var(--pil-font-sans);
-  font-weight: 300; // Light body text (the 300 weight is loaded in _config.yml); bold below stays 700
+  font-weight: 400; // Regular on desktop/tablet; phones use Light (300), see the phone block at the end
   color: var(--global-text-color);
 }
 
@@ -1048,6 +1048,15 @@ footer.pil-footer {
 @media (max-width: 576px) {
   html {
     font-size: 15px; // every rem-based size shrinks by about 6%
+  }
+
+  body {
+    font-weight: 300; // Light body text on phones (the 300 weight is loaded in _config.yml)
+  }
+
+  strong,
+  b {
+    font-weight: 500; // keeps the same two-step gap as desktop (400 / 600)
   }
 
   :root {
