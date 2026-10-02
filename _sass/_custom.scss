@@ -36,7 +36,14 @@
 
 body {
   font-family: var(--pil-font-sans);
+  font-weight: 400; // the theme sets 300, which made <strong> come out as regular weight
   color: var(--global-text-color);
+}
+
+// bold text (**...** in Markdown) is always clearly bold
+strong,
+b {
+  font-weight: 700;
 }
 
 /* ---------- Navbar: monospace, uppercase, underline on the active item ---------- */
