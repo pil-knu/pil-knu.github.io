@@ -1,4 +1,12 @@
 # News: date (YYYY-MM-DD), type (paper | project | member | seminar | other), text (Markdown). Any order; sorted by date on the site.
+- date: 2026-10-07
+  type: project
+  text: "KNU-PIL, together with Prof. Sangmoon Lee's lab, has been selected for the **Hyper-Connected Top Scientist Lab** program of the KNU **Glocal University 30 Project** (2026학년도 글로컬대학사업 초연결 최고과학자 연구실)."
+
+- date: 2026-09-02 # right above the NeurIPS 2026 acceptance news (2026-09-01)
+  type: other
+  text: "Prof. Jo has been recognized as a **Top Reviewer** at **NeurIPS 2026**."
+
 - date: 2026-10-01
   type: other
   text: "The KNU-PIL website has been renewed."
